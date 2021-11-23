@@ -20,8 +20,7 @@ namespace LPPS_Service
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>()
-                              .UseUrls(new string[] { "https://0.0.0.0:5020", "http://0.0.0.0:5021" });
+                    webBuilder.UseStartup<Startup>();
                 });
     }
 }
