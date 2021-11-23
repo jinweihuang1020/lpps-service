@@ -28,6 +28,7 @@ namespace LPPS_Service
         {
 
             services.AddControllers();
+            services.AddCors(); //¤¹³\¸ó°ì½Ð¨D
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LPPS_Service", Version = "v1" });
@@ -44,9 +45,10 @@ namespace LPPS_Service
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "LPPS_Service v1"));
             }
 
-            app.UseHttpsRedirection();
-
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
             app.UseRouting();
+            app.UseCors(options => options.SetIsOriginAllowed(x => _ = true).AllowAnyMethod().AllowAnyHeader().AllowCredentials());
 
             app.UseAuthorization();
 
